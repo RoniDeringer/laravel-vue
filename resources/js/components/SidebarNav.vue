@@ -26,7 +26,7 @@
       <NavItem to="/email" label="Envio de email">
         <template #icon><IconMail /></template>
       </NavItem>
-      <NavItem to="/clientes" label="Tabela Clientes">
+      <NavItem to="/cidades" label="Listagem cidades">
         <template #icon><IconUsers /></template>
       </NavItem>
     </div>

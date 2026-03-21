@@ -3,7 +3,7 @@
     <header>
       <h1 class="text-2xl font-semibold text-slate-900">Envio de email</h1>
       <p class="mt-2 text-slate-600">
-        Tela preparada para estudar formulários, validação, estados de loading e integração com API.
+        Rotina de estudos com envio assíncrono via fila (RabbitMQ) e suporte a cache com Redis.
       </p>
     </header>
 
