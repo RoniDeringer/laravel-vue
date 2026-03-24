@@ -1,0 +1,58 @@
+name: Laravel + Vue CI
+
+on:
+  schedule:
+    - cron: "0 3 * * *" #rodar 1x ai dia as 3am
+  workflow_dispatch: # opcional (rodar manual)
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositório
+        uses: actions/checkout@v4
+
+      # -------------------------
+      # PHP (Laravel)
+      # -------------------------
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: mbstring, bcmath, pdo, sqlite
+          coverage: none
+
+      - name: 📦 Instalar dependências PHP
+        run: composer install --no-interaction --prefer-dist
+
+      - name: 📄 Copiar .env
+        run: cp .env.example .env
+
+      - name: 🔑 Gerar APP_KEY
+        run: php artisan key:generate
+
+      - name: 🗄️ Configurar banco SQLite
+        run: |
+          touch database/database.sqlite
+          php artisan migrate --force
+
+      # -------------------------
+      # Node (Vue + Vite)
+      # -------------------------
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Instalar dependências JS
+        run: npm install
+
+      - name: ⚡ Build frontend
+        run: npm run build
+
+      # -------------------------
+      # Testes
+      # -------------------------
+      - name: 🧪 Rodar testes
+        run: php artisan test
