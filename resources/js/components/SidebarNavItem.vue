@@ -4,16 +4,16 @@
     class="group relative flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-medium transition"
     :class="
       isActive
-        ? 'bg-gradient-to-r from-indigo-500/25 via-fuchsia-500/15 to-sky-500/10 text-white ring-1 ring-inset ring-white/12 shadow-[0_0_18px_rgba(99,102,241,0.10)] after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full after:bg-gradient-to-b after:from-indigo-300 after:to-fuchsia-300'
-        : 'text-slate-200 hover:bg-white/10 hover:text-white'
+        ? 'bg-violet-600/10 text-[color:var(--ms-text)] ring-1 ring-inset ring-violet-600/15 after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full after:bg-gradient-to-b after:from-violet-500 after:to-fuchsia-500'
+        : 'text-[color:var(--ms-muted)] hover:bg-violet-600/10 hover:text-[color:var(--ms-text)]'
     "
   >
     <span
       class="grid h-9 w-9 place-items-center rounded-lg transition"
       :class="
         isActive
-          ? 'bg-white/10 text-white'
-          : 'bg-white/5 text-slate-100 ring-1 ring-white/10 group-hover:bg-white/10'
+          ? 'bg-violet-600/10 text-violet-700 ring-1 ring-violet-600/15'
+          : 'bg-[color:var(--ms-surface-2)] text-[color:var(--ms-muted)] ring-1 ring-[color:var(--ms-border)] group-hover:bg-violet-600/10 group-hover:text-[color:var(--ms-text)]'
       "
     >
       <slot name="icon" />

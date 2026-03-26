@@ -16,3 +16,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --ms-bg: #fbf8ff;
+        --ms-surface: rgba(248, 244, 255, 0.78);
+        --ms-surface-2: rgba(243, 236, 255, 0.64);
+        --ms-border: rgba(15, 23, 42, 0.16);
+        --ms-text: #0b1020;
+        --ms-muted: rgba(30, 41, 59, 0.72);
+
+        --ms-accent: #7c3aed;
+        --ms-accent-2: #d946ef;
+    }
+
+    :root.dark {
+        --ms-bg: #050316;
+        --ms-surface: rgba(10, 8, 26, 0.66);
+        --ms-surface-2: rgba(255, 255, 255, 0.06);
+        --ms-border: rgba(255, 255, 255, 0.11);
+        --ms-text: rgba(241, 245, 249, 0.96);
+        --ms-muted: rgba(226, 232, 240, 0.76);
+
+        --ms-accent: #a78bfa;
+        --ms-accent-2: #f0abfc;
+    }
+
+    html {
+        color-scheme: light;
+        background: var(--ms-bg);
+        color: var(--ms-text);
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    :root.dark {
+        color-scheme: dark;
+    }
+
+    body {
+        min-height: 100vh;
+        background: transparent;
+        color: inherit;
+    }
+}

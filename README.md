@@ -93,6 +93,25 @@ php artisan serve
 npm run dev
 ```
 
+## 🤖 GitHub Actions (CI)
+
+Este projeto tem um workflow automatizado no GitHub Actions em `.github/workflows/tests.yml` que roda **todo dia** e também pode ser executado manualmente (`workflow_dispatch`).
+
+### 🔍 O que esse workflow faz (pipeline mental)
+
+`checkout → setup PHP → composer install → .env + key → SQLite → setup Node → npm install + build → php artisan test`
+
+- ✅ checkout → baixa seu código
+- 🐘 setup PHP → prepara ambiente Laravel
+- 📦 composer install → instala backend
+- 🔑 .env + key → deixa app funcional
+- 🗄️ SQLite → evita precisar de MySQL (mais simples pra CI)
+- 🟢 setup Node → prepara Vue/Vite
+- 📦 npm install + build → garante que frontend compila
+- 🧪 php artisan test → valida tudo
+
+> Agenda: `0 3 * * *` (03:00 UTC — 00:00 em `America/Sao_Paulo`).
+
 ## 🧪 Testes
 
 ```bash

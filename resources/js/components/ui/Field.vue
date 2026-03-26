@@ -1,6 +1,6 @@
 <template>
   <label class="grid gap-2">
-    <span class="text-sm font-semibold text-slate-700">{{ label }}</span>
+    <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">{{ label }}</span>
     <slot />
   </label>
 </template>

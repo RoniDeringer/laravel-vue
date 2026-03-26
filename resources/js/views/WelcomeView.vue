@@ -1,10 +1,10 @@
 <template>
   <div class="mx-auto max-w-5xl">
-    <div class="rounded-3xl border border-slate-200/70 bg-white/70 p-8 shadow-sm backdrop-blur">
+    <div class="rounded-3xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface)] p-8 shadow-sm backdrop-blur">
       <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div class="min-w-0">
-          <h1 class="text-2xl font-semibold text-slate-900 md:text-3xl">Boas-vindas 👋</h1>
-          <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-700">
+          <h1 class="text-2xl font-semibold md:text-3xl">Boas-vindas 👋</h1>
+          <p class="mt-3 max-w-2xl text-base leading-relaxed text-[color:var(--ms-muted)]">
             Este projeto é um laboratório de estudos para experimentar novas ferramentas, padrões e
             conceitos. A ideia é construir as telas e componentes de forma <b>manual</b>, praticando
             Tailwind CSS “na mão” (sem biblioteca de UI pronta) e evoluindo a organização do código
@@ -38,13 +38,21 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import Badge from '../components/ui/BadgePill.vue'
 import InfoCard from '../components/ui/InfoCard.vue'
+import { useTheme } from '../composables/useTheme'
 
-const icons = {
-  laravel: 'https://skillicons.dev/icons?i=laravel&theme=light',
-  vue: 'https://skillicons.dev/icons?i=vue&theme=light',
-  tailwind: 'https://skillicons.dev/icons?i=tailwind&theme=light',
-  vite: 'https://skillicons.dev/icons?i=vite&theme=light',
-}
+const { theme } = useTheme()
+
+const icons = computed(() => {
+  const iconTheme = theme.value === 'dark' ? 'dark' : 'light'
+
+  return {
+    laravel: `https://skillicons.dev/icons?i=laravel&theme=${iconTheme}`,
+    vue: `https://skillicons.dev/icons?i=vue&theme=${iconTheme}`,
+    tailwind: `https://skillicons.dev/icons?i=tailwind&theme=${iconTheme}`,
+    vite: `https://skillicons.dev/icons?i=vite&theme=${iconTheme}`,
+  }
+})
 </script>

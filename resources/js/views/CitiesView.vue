@@ -1,19 +1,19 @@
 <template>
   <div class="mx-auto max-w-6xl">
     <header class="flex flex-col gap-2">
-      <h1 class="text-2xl font-semibold text-slate-900">Listagem de cidades</h1>
-      <p class="text-slate-600">
+      <h1 class="text-2xl font-semibold">Listagem de cidades</h1>
+      <p class="text-[color:var(--ms-muted)]">
         Dados carregados da API do IBGE, com filtros, pesquisa instantânea e paginação.
       </p>
     </header>
 
-    <section class="mt-6 overflow-hidden rounded-3xl border border-slate-200/70 bg-white/70 shadow-sm">
+    <section class="mt-6 overflow-hidden rounded-3xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface)] shadow-sm backdrop-blur">
       <div class="flex flex-col gap-4 p-5 md:flex-row md:items-end md:justify-between">
         <div class="grid w-full gap-3 md:max-w-2xl md:grid-cols-3">
           <Field label="Pesquisar">
             <input
               v-model="searchInput"
-              class="w-full cursor-text rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2.5 text-sm text-slate-900 outline-none ring-indigo-600/20 transition focus:ring-4"
+              class="w-full cursor-text rounded-xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface-2)] px-4 py-2.5 text-sm text-[color:var(--ms-text)] outline-none ring-violet-500/20 transition focus:ring-4 placeholder:text-slate-500/80 dark:placeholder:text-slate-400/70"
               placeholder="Cidade, UF ou estado..."
               type="search"
               autocomplete="off"
@@ -23,7 +23,7 @@
           <Field label="UF">
             <select
               v-model="selectedUf"
-              class="w-full cursor-pointer rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2.5 text-sm text-slate-900 outline-none ring-indigo-600/20 transition focus:ring-4"
+              class="w-full cursor-pointer rounded-xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface-2)] px-4 py-2.5 text-sm text-[color:var(--ms-text)] outline-none ring-violet-500/20 transition focus:ring-4"
             >
               <option value="">Todas</option>
               <option v-for="uf in ufs" :key="uf" :value="uf">{{ uf }}</option>
@@ -33,7 +33,7 @@
           <Field label="Região">
             <select
               v-model="selectedRegion"
-              class="w-full cursor-pointer rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-2.5 text-sm text-slate-900 outline-none ring-indigo-600/20 transition focus:ring-4"
+              class="w-full cursor-pointer rounded-xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface-2)] px-4 py-2.5 text-sm text-[color:var(--ms-text)] outline-none ring-violet-500/20 transition focus:ring-4"
             >
               <option value="">Todas</option>
               <option v-for="region in regions" :key="region" :value="region">
@@ -44,18 +44,18 @@
         </div>
 
         <div class="flex items-center justify-between gap-3 md:justify-end">
-          <div class="text-sm text-slate-600">
-            <span class="font-semibold text-slate-800">{{ filteredCount }}</span>
+          <div class="text-sm text-[color:var(--ms-muted)]">
+            <span class="font-semibold text-[color:var(--ms-text)]">{{ filteredCount }}</span>
             resultados
           </div>
         </div>
       </div>
 
-      <div class="border-t border-slate-200/70">
+      <div class="border-t border-[color:var(--ms-border)]">
         <div v-if="loading" class="p-6">
-          <div class="flex items-center gap-3 text-slate-700">
+          <div class="flex items-center gap-3 text-[color:var(--ms-muted)]">
             <span
-              class="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-indigo-500"
+              class="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-violet-500 dark:border-white/15"
             />
             Carregando cidades...
           </div>
@@ -70,7 +70,7 @@
 
         <div v-else class="overflow-x-auto">
           <table class="min-w-full text-left text-sm">
-            <thead class="bg-slate-50/70 text-xs uppercase tracking-wide text-slate-500">
+            <thead class="bg-[color:var(--ms-surface-2)] text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300">
               <tr>
                 <th class="px-5 py-3 font-semibold">Cidade</th>
                 <th class="px-5 py-3 font-semibold">UF</th>
@@ -78,19 +78,25 @@
                 <th class="px-5 py-3 font-semibold">Região</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-200/70">
-              <tr v-for="row in pageRows" :key="row.id" class="hover:bg-slate-900/[0.02]">
-                <td class="px-5 py-4 font-semibold text-slate-900">{{ row.city }}</td>
-                <td class="px-5 py-4 text-slate-700">{{ row.uf }}</td>
-                <td class="px-5 py-4 text-slate-700">{{ row.state }}</td>
-                <td class="px-5 py-4 text-slate-700">{{ row.region }}</td>
+            <tbody class="divide-y divide-[color:var(--ms-border)]">
+              <tr
+                v-for="row in pageRows"
+                :key="row.id"
+                class="hover:bg-slate-900/[0.02] dark:hover:bg-white/5"
+              >
+                <td class="px-5 py-4 font-semibold">
+                  {{ row.city }}
+                </td>
+                <td class="px-5 py-4 text-[color:var(--ms-muted)]">{{ row.uf }}</td>
+                <td class="px-5 py-4 text-[color:var(--ms-muted)]">{{ row.state }}</td>
+                <td class="px-5 py-4 text-[color:var(--ms-muted)]">{{ row.region }}</td>
               </tr>
 
               <tr v-if="pageRows.length === 0">
                 <td class="px-5 py-6 text-slate-700" colspan="4">
                   <div class="flex flex-col gap-1">
-                    <div class="font-semibold text-slate-900">Nenhum resultado</div>
-                    <div class="text-slate-600">Tente ajustar os filtros ou a busca.</div>
+                    <div class="font-semibold">Nenhum resultado</div>
+                    <div class="text-[color:var(--ms-muted)]">Tente ajustar os filtros ou a busca.</div>
                   </div>
                 </td>
               </tr>
@@ -99,10 +105,10 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-3 border-t border-slate-200/70 p-5 sm:flex-row sm:items-center sm:justify-between">
-        <div class="text-sm text-slate-600">
-          Página <span class="font-semibold text-slate-800">{{ page }}</span> de
-          <span class="font-semibold text-slate-800">{{ totalPages }}</span>
+      <div class="flex flex-col gap-3 border-t border-[color:var(--ms-border)] p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="text-sm text-[color:var(--ms-muted)]">
+          Página <span class="font-semibold text-[color:var(--ms-text)]">{{ page }}</span> de
+          <span class="font-semibold text-[color:var(--ms-text)]">{{ totalPages }}</span>
         </div>
 
         <div class="flex items-center gap-2">
@@ -111,8 +117,8 @@
             class="rounded-xl px-3 py-2 text-sm font-semibold ring-1 ring-inset transition"
             :class="
               page === 1
-                ? 'cursor-not-allowed bg-slate-900/5 text-slate-400 ring-slate-900/10'
-                : 'cursor-pointer bg-white/60 text-slate-800 ring-slate-900/10 hover:bg-white'
+                ? 'cursor-not-allowed bg-slate-900/5 text-slate-400 ring-[color:var(--ms-border)]'
+                : 'cursor-pointer bg-[color:var(--ms-surface-2)] text-[color:var(--ms-text)] ring-[color:var(--ms-border)] hover:bg-white/70 dark:hover:bg-white/10'
             "
             :disabled="page === 1"
             @click="page = Math.max(1, page - 1)"
@@ -127,8 +133,8 @@
             class="hidden rounded-xl px-3 py-2 text-sm font-semibold ring-1 ring-inset transition sm:inline-flex"
             :class="
               p === page
-                ? 'cursor-pointer bg-indigo-600 text-white ring-indigo-600/30'
-                : 'cursor-pointer bg-white/60 text-slate-800 ring-slate-900/10 hover:bg-white'
+                ? 'cursor-pointer bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white ring-violet-600/25'
+                : 'cursor-pointer bg-[color:var(--ms-surface-2)] text-[color:var(--ms-text)] ring-[color:var(--ms-border)] hover:bg-white/70 dark:hover:bg-white/10'
             "
             @click="page = p"
           >
@@ -140,8 +146,8 @@
             class="rounded-xl px-3 py-2 text-sm font-semibold ring-1 ring-inset transition"
             :class="
               page === totalPages
-                ? 'cursor-not-allowed bg-slate-900/5 text-slate-400 ring-slate-900/10'
-                : 'cursor-pointer bg-white/60 text-slate-800 ring-slate-900/10 hover:bg-white'
+                ? 'cursor-not-allowed bg-slate-900/5 text-slate-400 ring-[color:var(--ms-border)]'
+                : 'cursor-pointer bg-[color:var(--ms-surface-2)] text-[color:var(--ms-text)] ring-[color:var(--ms-border)] hover:bg-white/70 dark:hover:bg-white/10'
             "
             :disabled="page === totalPages"
             @click="page = Math.min(totalPages, page + 1)"

@@ -1,7 +1,7 @@
 <template>
-  <div class="rounded-3xl border border-slate-200/70 bg-white/60 p-5">
-    <div class="text-sm font-semibold text-slate-900">{{ title }}</div>
-    <div class="mt-2 text-sm leading-relaxed text-slate-700">
+  <div class="rounded-3xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface-2)] p-5 backdrop-blur">
+    <div class="text-sm font-semibold text-[color:var(--ms-text)]">{{ title }}</div>
+    <div class="mt-2 text-sm leading-relaxed text-[color:var(--ms-muted)]">
       <slot />
     </div>
   </div>

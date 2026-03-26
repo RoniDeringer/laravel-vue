@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-2xl border border-slate-200/70 bg-slate-50/70 px-4 py-3 shadow-sm"
+    class="rounded-2xl border border-[color:var(--ms-border)] bg-[color:var(--ms-surface-2)] px-4 py-3 shadow-sm backdrop-blur"
   >
     <div class="flex items-center justify-between gap-3">
       <img
@@ -10,7 +10,7 @@
         loading="lazy"
         decoding="async"
       />
-      <div class="text-lg font-semibold text-slate-900">{{ value }}</div>
+      <div class="text-lg font-semibold text-[color:var(--ms-text)]">{{ value }}</div>
     </div>
   </div>
 </template>

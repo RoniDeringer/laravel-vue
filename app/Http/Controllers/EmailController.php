@@ -20,7 +20,7 @@ class EmailController extends Controller
             'queued_at' => now()->toIso8601String(),
         ], now()->addMinutes(30));
 
-        SendStudyEmailJob::dispatch(
+        SendStudyEmailJob::dispatch( //aqui dispara o job
             to: $payload['to'],
             subject: $payload['subject'],
             message: $payload['message'],
@@ -32,4 +32,3 @@ class EmailController extends Controller
         ], 202);
     }
 }
-

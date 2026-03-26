@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ThemePreferenceController;
 use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -30,5 +31,8 @@ Route::get('/api/ibge/municipios', function () {
 });
 
 Route::post('/api/email', [EmailController::class, 'store']);
+
+Route::get('/api/preferences/theme', [ThemePreferenceController::class, 'show']);
+Route::post('/api/preferences/theme', [ThemePreferenceController::class, 'update']);
 
 Route::view('/{path}', 'welcome')->where('path', '.*');
