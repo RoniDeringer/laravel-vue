@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ThemePreferenceController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\JobExecutionController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Route::get('/api/ibge/municipios', function () {
 });
 
 Route::post('/api/email', [EmailController::class, 'store']);
+
+Route::get('/api/jobs/executions', [JobExecutionController::class, 'index']);
+Route::get('/api/jobs/executions/{jobExecution}', [JobExecutionController::class, 'show']);
 
 Route::get('/api/preferences/theme', [ThemePreferenceController::class, 'show']);
 Route::post('/api/preferences/theme', [ThemePreferenceController::class, 'update']);

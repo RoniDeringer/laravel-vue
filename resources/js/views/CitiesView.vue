@@ -70,7 +70,7 @@
 
         <div v-else class="overflow-x-auto">
           <table class="min-w-full text-left text-sm">
-            <thead class="bg-[color:var(--ms-surface-2)] text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300">
+            <thead class="bg-[color:var(--ms-surface-2)] text-xs uppercase tracking-wide text-[color:var(--ms-muted)]">
               <tr>
                 <th class="px-5 py-3 font-semibold">Cidade</th>
                 <th class="px-5 py-3 font-semibold">UF</th>
@@ -93,7 +93,7 @@
               </tr>
 
               <tr v-if="pageRows.length === 0">
-                <td class="px-5 py-6 text-slate-700" colspan="4">
+                <td class="px-5 py-6 text-[color:var(--ms-text)]" colspan="4">
                   <div class="flex flex-col gap-1">
                     <div class="font-semibold">Nenhum resultado</div>
                     <div class="text-[color:var(--ms-muted)]">Tente ajustar os filtros ou a busca.</div>
@@ -117,7 +117,7 @@
             class="rounded-xl px-3 py-2 text-sm font-semibold ring-1 ring-inset transition"
             :class="
               page === 1
-                ? 'cursor-not-allowed bg-slate-900/5 text-slate-400 ring-[color:var(--ms-border)]'
+                ? 'cursor-not-allowed bg-slate-900/5 text-[color:var(--ms-muted)] opacity-60 ring-[color:var(--ms-border)]'
                 : 'cursor-pointer bg-[color:var(--ms-surface-2)] text-[color:var(--ms-text)] ring-[color:var(--ms-border)] hover:bg-white/70 dark:hover:bg-white/10'
             "
             :disabled="page === 1"
@@ -146,7 +146,7 @@
             class="rounded-xl px-3 py-2 text-sm font-semibold ring-1 ring-inset transition"
             :class="
               page === totalPages
-                ? 'cursor-not-allowed bg-slate-900/5 text-slate-400 ring-[color:var(--ms-border)]'
+                ? 'cursor-not-allowed bg-slate-900/5 text-[color:var(--ms-muted)] opacity-60 ring-[color:var(--ms-border)]'
                 : 'cursor-pointer bg-[color:var(--ms-surface-2)] text-[color:var(--ms-text)] ring-[color:var(--ms-border)] hover:bg-white/70 dark:hover:bg-white/10'
             "
             :disabled="page === totalPages"

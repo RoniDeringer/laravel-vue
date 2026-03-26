@@ -29,6 +29,9 @@
         <NavItem to="/email" label="Envio de email">
           <template #icon><IconMail /></template>
         </NavItem>
+        <NavItem to="/jobs" label="Execuções jobs">
+          <template #icon><IconSpark /></template>
+        </NavItem>
         <NavItem to="/cidades" label="Listagem cidades">
           <template #icon><IconUsers /></template>
         </NavItem>
@@ -67,6 +70,7 @@ import IconDashboard from '../icons/IconDashboard.vue'
 import IconMail from '../icons/IconMail.vue'
 import IconMoon from '../icons/IconMoon.vue'
 import IconSalad from '../icons/IconSalad.vue'
+import IconSpark from '../icons/IconSpark.vue'
 import IconSun from '../icons/IconSun.vue'
 import IconUsers from '../icons/IconUsers.vue'
 import { useTheme } from '../composables/useTheme'

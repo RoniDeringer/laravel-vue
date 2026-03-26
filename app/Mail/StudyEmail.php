@@ -12,15 +12,22 @@ class StudyEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public string $emailSubject;
+
+    public string $messageText;
+
     public function __construct(
-        public string $subject,
-        public string $message,
-    ) {}
+        string $subject,
+        string $message,
+    ) {
+        $this->emailSubject = $subject;
+        $this->messageText = $message;
+    }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->subject,
+            subject: $this->emailSubject,
         );
     }
 
@@ -29,9 +36,8 @@ class StudyEmail extends Mailable
         return new Content(
             view: 'emails.study',
             with: [
-                'messageText' => $this->message,
+                'messageText' => $this->messageText,
             ],
         );
     }
 }
-

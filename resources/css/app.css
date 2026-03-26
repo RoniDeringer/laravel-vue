@@ -20,11 +20,13 @@
 @layer base {
     :root {
         --ms-bg: #fbf8ff;
-        --ms-surface: rgba(248, 244, 255, 0.78);
-        --ms-surface-2: rgba(243, 236, 255, 0.64);
-        --ms-border: rgba(15, 23, 42, 0.16);
+        --ms-surface: rgba(248, 244, 255, 0.92);
+        --ms-surface-2: rgba(243, 236, 255, 0.88);
+        --ms-surface-solid: #ffffff;
+        --ms-surface-2-solid: #f7f4ff;
+        --ms-border: rgba(15, 23, 42, 0.22);
         --ms-text: #0b1020;
-        --ms-muted: rgba(30, 41, 59, 0.72);
+        --ms-muted: rgba(30, 41, 59, 0.92);
 
         --ms-accent: #7c3aed;
         --ms-accent-2: #d946ef;
@@ -32,11 +34,13 @@
 
     :root.dark {
         --ms-bg: #050316;
-        --ms-surface: rgba(10, 8, 26, 0.66);
-        --ms-surface-2: rgba(255, 255, 255, 0.06);
-        --ms-border: rgba(255, 255, 255, 0.11);
+        --ms-surface: rgba(10, 8, 26, 0.88);
+        --ms-surface-2: rgba(255, 255, 255, 0.08);
+        --ms-surface-solid: #0b0a1d;
+        --ms-surface-2-solid: #10102a;
+        --ms-border: rgba(255, 255, 255, 0.14);
         --ms-text: rgba(241, 245, 249, 0.96);
-        --ms-muted: rgba(226, 232, 240, 0.76);
+        --ms-muted: rgba(226, 232, 240, 0.86);
 
         --ms-accent: #a78bfa;
         --ms-accent-2: #f0abfc;
@@ -59,5 +63,13 @@
         min-height: 100vh;
         background: transparent;
         color: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    button:disabled {
+        cursor: not-allowed;
     }
 }
